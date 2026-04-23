@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 #include "binaryheap.h"
 
 
@@ -41,4 +42,3 @@ int main(void)
 
     return 0;
 }
-

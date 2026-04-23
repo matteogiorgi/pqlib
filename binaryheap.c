@@ -1,4 +1,5 @@
 #include <stdlib.h>
+
 #include "binaryheap.h"
 
 
@@ -162,4 +163,3 @@ void binaryheap_build(struct binaryheap *heap, void **items, size_t count, binar
     for (index = count / 2; index > 0; index--)
         binaryheap_sift_down(heap, index - 1);
 }
-

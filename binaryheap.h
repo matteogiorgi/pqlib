@@ -24,4 +24,3 @@ size_t binaryheap_size(const struct binaryheap *heap);
 int binaryheap_empty(const struct binaryheap *heap);
 void binaryheap_build(struct binaryheap *heap, void **items, size_t count, binaryheap_cmp_fn cmp);
 #endif
-

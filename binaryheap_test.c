@@ -1,6 +1,7 @@
-#include <assert.h>
-#include <stddef.h>
 #include <stdio.h>
+#include <stddef.h>
+#include <assert.h>
+
 #include "binaryheap.h"
 
 
@@ -106,4 +107,3 @@ int main(void)
     printf("All tests passed\n");
     return 0;
 }
-
