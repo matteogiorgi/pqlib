@@ -1,0 +1,70 @@
+Le intenzioni di questo repository sono quelle di creare una libreria che gestisca le priority-queue in diverse modalità:
+
+- heap binari;
+- heap di Fibonacci;
+- heap di Fibonacci revisited (qui chiamati heap di Kaplan);
+- randomized skiplist;
+- deterministic skiplist;
+- chunked skiplist;
+
+e lascia spazio ad altre implementazioni future che sfruttano altre strutture dati.
+
+
+
+
+La seguente tassonomia serve per chiarire cosa deve essere implementato, in realtà sono tutte implementazioni concrete della stessa API pubblica priority-queue:
+
+- ADT pubblico:
+    + priority_queue
+- famiglie implementative:
+    + heaps/
+    + skiplists/
+- implementazioni concrete:
+    + binary_heap
+    + fibonacci_heap
+    + kaplan_heap
+    + randomized_skiplist
+    + deterministic_skiplist
+    + chunked_skiplist
+
+
+
+
+Nota architetturale:
+
+- esiste una sola API astratta pubblica: priority_queue;
+- le famiglie heaps/ e skiplists/ sono solo categorie organizzative;
+- ogni implementazione concreta fornisce direttamente la vtable della priority_queue;
+- non sono previste vtable intermedie per heap o skiplist, salvo necessità future.
+
+
+
+
+Come deve essere implementato il codice:
+
+- deve essere implementato interamente in C99 (per avere massima portabilità);
+- deve essere strutturato in modo modulare, separando interfaccia e implementazione delle strutture dati;
+- ogni priority-queue sarà esposta tramite un’API astratta comune, mentre le diverse varianti concrete (ad esempio implementazioni basate su heap, skip-list o altre strutture dati) forniranno implementazioni distinte della stessa interfaccia logica;
+- l’organizzazione del codice ricalca il modello tipico dei linguaggi object-oriented come Java o Scala, ma adattato idiomaticamente al C.
+
+
+
+
+Un primo set di operazioni delle priority-queue è il seguente:
+
+- create;
+- destroy;
+- push;
+- peek;
+- pop;
+- size;
+- empty.
+
+
+
+
+Altre operazioni più complesse da implementare in un secondo momento sono le seguenti:
+
+- decrease_key;
+- remove;
+- contains.

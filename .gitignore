@@ -11,10 +11,4 @@ report/*
 .codex
 
 binaryheap_demo
-adj/bench_adj
-adj/stress_adj
-csr/bench_csr
-csr/stress_csr
-arena_bump/arena_demo
-single_block_offset/single_block_demo
-
+binaryheap_test

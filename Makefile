@@ -3,8 +3,8 @@ CFLAGS := -std=c11 -Wall -Wextra -pedantic
 
 
 TARGET := binaryheap.o
-RUN_TARGET := binaryheap_demo
-TEST_TARGET := test_binaryheap
+TARGET_RUN := binaryheap_demo
+TARGET_TEST := binaryheap_test
 SRC := binaryheap.c
 SRC_DEMO := binaryheap_demo.c
 SRC_TEST := binaryheap_test.c
@@ -17,17 +17,17 @@ all: $(TARGET)
 $(TARGET): $(SRC) $(HEADER)
 	$(CC) $(CFLAGS) -c $(SRC) -o $(TARGET)
 
-$(RUN_TARGET): $(SRC) $(SRC_DEMO) $(HEADER)
-	$(CC) $(CFLAGS) $(SRC) $(SRC_DEMO) -o $(RUN_TARGET)
+$(TARGET_RUN): $(SRC) $(SRC_DEMO) $(HEADER)
+	$(CC) $(CFLAGS) $(SRC) $(SRC_DEMO) -o $(TARGET_RUN)
 
-$(TEST_TARGET): $(SRC) $(SRC_TEST) $(HEADER)
-	$(CC) $(CFLAGS) $(SRC) $(SRC_TEST) -o $(TEST_TARGET)
+$(TARGET_TEST): $(SRC) $(SRC_TEST) $(HEADER)
+	$(CC) $(CFLAGS) $(SRC) $(SRC_TEST) -o $(TARGET_TEST)
 
-run: $(RUN_TARGET)
-	./$(RUN_TARGET)
+run: $(TARGET_RUN)
+	./$(TARGET_RUN)
 
-test: $(TEST_TARGET)
-	./$(TEST_TARGET)
+test: $(TARGET_TEST)
+	./$(TARGET_TEST)
 
 clean:
-	rm -f $(TARGET) $(RUN_TARGET) $(TEST_TARGET)
+	rm -f $(TARGET) $(TARGET_RUN) $(TARGET_TEST)
