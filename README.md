@@ -63,6 +63,10 @@ Available implementations are:
 | --- | --- | --- |
 | `PRIORITY_QUEUE_BINARY_HEAP` | `"binary_heap"` | implemented |
 | `PRIORITY_QUEUE_RANDOMIZED_SKIPLIST` | `"randomized_skiplist"` | implemented |
+| `PRIORITY_QUEUE_FIBONACCI_HEAP` | `"fibonacci_heap"` | planned |
+| `PRIORITY_QUEUE_KAPLAN_HEAP` | `"kaplan_heap"` | planned |
+| `PRIORITY_QUEUE_DETERMINISTIC_SKIPLIST` | `"deterministic_skiplist"` | planned |
+| `PRIORITY_QUEUE_CHUNKED_SKIPLIST` | `"chunked_skiplist"` | planned |
 
 
 
@@ -168,6 +172,21 @@ Build and install from the repository root:
 ```sh
 python3 -m pip install .
 ```
+
+On Debian, Ubuntu, and other systems that protect the system Python
+environment, install pqlib inside a virtual environment. The virtual environment
+does not need to live inside the repository; you can create it anywhere and
+install pqlib from the repository path:
+
+```sh
+cd /tmp
+python3 -m venv pqlib-env
+source pqlib-env/bin/activate
+python3 -m pip install /home/matteo/doc/pqlib
+```
+
+After that, `pqlib` is importable from any directory while that virtual
+environment is active.
 
 For local development, install in editable mode:
 
