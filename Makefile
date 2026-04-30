@@ -45,6 +45,7 @@ python-build:
 
 python-test: python-build
 	python3 tests/python_priority_queue_test.py
+	python3 tests/learning_augmented_priority_queue_test.py
 
 wheel:
 	python3 -m pip wheel . --no-deps --no-build-isolation -w dist
@@ -72,3 +73,5 @@ clean:
 	rm -rf dist
 	rm -rf pqlib.egg-info
 	rm -f pqlib*.so
+	rm -rf tests/__pycache__
+	rm -rf tests/pq_experiments/__pycache__

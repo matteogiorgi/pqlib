@@ -1,11 +1,14 @@
 tags
 *~
-*.gr
+# *.gr
 *.gz
 *.o
 *.so
+*.pyc
+__pycache__/
 *.egg-info/
 dist/
+experiments/results/
 
 report/*
 !report/*.tex
