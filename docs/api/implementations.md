@@ -9,8 +9,8 @@ the same public `priority_queue` API.
 | Backend | C selector | Python selector | Status |
 | --- | --- | --- | --- |
 | Binary heap | `PRIORITY_QUEUE_BINARY_HEAP` | `"binary_heap"` | implemented |
-| Fibonacci heap | `PRIORITY_QUEUE_FIBONACCI_HEAP` | `"fibonacci_heap"` | stub |
-| Kaplan heap | `PRIORITY_QUEUE_KAPLAN_HEAP` | `"kaplan_heap"` | stub |
+| Fibonacci heap | `PRIORITY_QUEUE_FIBONACCI_HEAP` | `"fibonacci_heap"` | implemented |
+| Kaplan heap | `PRIORITY_QUEUE_KAPLAN_HEAP` | `"kaplan_heap"` | implemented |
 
 ## binary_heap
 
@@ -44,33 +44,69 @@ Notes:
 
 ## fibonacci_heap
 
-Status: stub, not implemented.
+Status: implemented.
 
 Source files:
 
 - `src/heaps/fibonacci_heap.c`
 - `src/heaps/fibonacci_heap.h`
 
-Current behavior:
+Data structure:
 
-- the C factory recognizes `PRIORITY_QUEUE_FIBONACCI_HEAP`;
-- `fibonacci_heap_create()` returns `NULL`;
-- the Python selector `"fibonacci_heap"` raises `NotImplementedError`.
+- circular doubly linked root list;
+- circular doubly linked child lists;
+- minimum-node pointer;
+- delete-min consolidation by root degree.
+
+Expected operation costs:
+
+| Operation | Cost |
+| --- | --- |
+| `priority_queue_push` | amortized `O(1)` |
+| `priority_queue_peek` | `O(1)` |
+| `priority_queue_pop` | amortized `O(log n)` |
+| `priority_queue_size` | `O(1)` |
+| `priority_queue_empty` | `O(1)` |
+
+Notes:
+
+- the current public API does not expose `decrease_key`;
+- the node layout keeps parent/child/degree/mark fields so the backend can be
+  extended later;
+- equal-priority items are not guaranteed to pop in insertion order.
 
 ## kaplan_heap
 
-Status: stub, not implemented.
+Status: implemented.
 
 Source files:
 
 - `src/heaps/kaplan_heap.c`
 - `src/heaps/kaplan_heap.h`
 
-This backend is reserved for the Fibonacci-heaps-revisited structure referred
-to in this project as a Kaplan heap.
+This backend implements the simple Fibonacci heap from "Fibonacci Heaps
+Revisited", referred to in this project as a Kaplan heap.
 
-Current behavior:
+Data structure:
 
-- the C factory recognizes `PRIORITY_QUEUE_KAPLAN_HEAP`;
-- `kaplan_heap_create()` returns `NULL`;
-- the Python selector `"kaplan_heap"` raises `NotImplementedError`.
+- one heap-ordered tree per queue;
+- doubly linked child lists;
+- rank per node;
+- delete-min consolidation through fair links, followed by naive links.
+
+Expected operation costs:
+
+| Operation | Cost |
+| --- | --- |
+| `priority_queue_push` | amortized `O(1)` |
+| `priority_queue_peek` | `O(1)` |
+| `priority_queue_pop` | amortized `O(log n)` |
+| `priority_queue_size` | `O(1)` |
+| `priority_queue_empty` | `O(1)` |
+
+Notes:
+
+- the current public API does not expose `decrease_key`;
+- the node layout keeps parent/child/rank/mark fields so the backend can be
+  extended later;
+- equal-priority items are not guaranteed to pop in insertion order.

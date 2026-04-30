@@ -31,14 +31,12 @@ Selectors:
 | Selector | Status |
 | --- | --- |
 | `"binary_heap"` | implemented |
-| `"fibonacci_heap"` | recognized, not implemented |
-| `"kaplan_heap"` | recognized, not implemented |
+| `"fibonacci_heap"` | implemented |
+| `"kaplan_heap"` | implemented |
 
 Raises:
 
 - `ValueError` if the selector is unknown;
-- `NotImplementedError` if the selector names a planned backend that is not
-  implemented yet;
 - `MemoryError` if the native queue cannot be allocated.
 
 ### Ordering

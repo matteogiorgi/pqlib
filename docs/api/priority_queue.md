@@ -63,8 +63,8 @@ Items still stored in the queue remain caller-owned.
 | Selector | Status |
 | --- | --- |
 | `PRIORITY_QUEUE_BINARY_HEAP` | implemented |
-| `PRIORITY_QUEUE_FIBONACCI_HEAP` | stub, not implemented |
-| `PRIORITY_QUEUE_KAPLAN_HEAP` | stub, not implemented |
+| `PRIORITY_QUEUE_FIBONACCI_HEAP` | implemented |
+| `PRIORITY_QUEUE_KAPLAN_HEAP` | implemented |
 
 See [Heap Implementations](implementations.md) for backend-specific notes.
 
@@ -91,7 +91,6 @@ Returns:
 - a queue handle on success;
 - `NULL` if `cmp` is `NULL`;
 - `NULL` if `implementation` is unsupported;
-- `NULL` if the selected implementation is recognized but not implemented yet;
 - `NULL` if allocation fails.
 
 Ownership:

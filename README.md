@@ -7,12 +7,13 @@ implementations so comparisons stay compact and specialized.
 The repository currently contains:
 
 - a public C API based on the opaque `struct priority_queue` type;
-- a binary min-heap implementation;
+- binary min-heap, Fibonacci heap, and Kaplan heap implementations;
 - a CPython extension module exposing the same queue concept as
   `hpqlib.PriorityQueue`;
 - additional documentation under `docs/`.
 
-Planned heap-based implementations include Fibonacci heaps and Kaplan heaps.
+Implemented heap-based backends include binary heaps, Fibonacci heaps, and
+Kaplan heaps.
 
 
 
@@ -59,8 +60,8 @@ Available implementations are:
 | C enum | Python name | Status |
 | --- | --- | --- |
 | `PRIORITY_QUEUE_BINARY_HEAP` | `"binary_heap"` | implemented |
-| `PRIORITY_QUEUE_FIBONACCI_HEAP` | `"fibonacci_heap"` | stub, not implemented |
-| `PRIORITY_QUEUE_KAPLAN_HEAP` | `"kaplan_heap"` | stub, not implemented |
+| `PRIORITY_QUEUE_FIBONACCI_HEAP` | `"fibonacci_heap"` | implemented |
+| `PRIORITY_QUEUE_KAPLAN_HEAP` | `"kaplan_heap"` | implemented |
 
 
 
@@ -175,8 +176,8 @@ print(len(queue))    # 2
 print(bool(queue))   # True
 ```
 
-The planned `"fibonacci_heap"` and `"kaplan_heap"` selectors are recognized but
-raise `NotImplementedError` until their backends are written.
+The `"kaplan_heap"` selector exposes the simple Fibonacci heap described in
+`docs/papers/fibonacci_heaps_revisited.pdf`.
 
 ## Build And Test
 
@@ -263,8 +264,8 @@ across multiple Python versions and operating systems.
 - `src/priority_queue_internal.h`: internal base object layout and vtable.
 - `src/heaps/`: heap-based implementations.
 - `src/heaps/binary_heap.c`: binary min-heap backend.
-- `src/heaps/fibonacci_heap.c`: planned Fibonacci heap backend stub.
-- `src/heaps/kaplan_heap.c`: planned Kaplan heap backend stub.
+- `src/heaps/fibonacci_heap.c`: Fibonacci heap backend.
+- `src/heaps/kaplan_heap.c`: Kaplan heap backend.
 - `python/`: CPython extension source.
 - `python/hpqlibmodule.c`: Python binding implementation.
 - `docs/`: focused documentation pages for C usage, Python usage, and

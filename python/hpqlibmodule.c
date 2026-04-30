@@ -17,13 +17,6 @@ typedef struct {
     struct priority_queue *queue;
 } PyPriorityQueue;
 
-static int priority_queue_implementation_available(
-    enum priority_queue_implementation implementation
-)
-{
-    return implementation == PRIORITY_QUEUE_BINARY_HEAP;
-}
-
 /*
  * Release the native queue and any Python objects still stored in it.
  */
@@ -127,15 +120,6 @@ static int PyPriorityQueue_init(
 
     if (parse_implementation(implementation_name, &implementation) != 0)
         return -1;
-
-    if (!priority_queue_implementation_available(implementation)) {
-        PyErr_Format(
-            PyExc_NotImplementedError,
-            "priority queue implementation '%s' is not implemented yet",
-            implementation_name
-        );
-        return -1;
-    }
 
     PyPriorityQueue_clear(self);
 

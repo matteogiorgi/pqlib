@@ -34,8 +34,8 @@ struct priority_queue;
 /*
  * Create an empty priority queue backed by the selected implementation.
  *
- * Returns NULL if the implementation is unsupported, not implemented yet,
- * cmp is NULL, or memory allocation fails.
+ * Returns NULL if the implementation is unsupported, cmp is NULL, or memory
+ * allocation fails.
  */
 struct priority_queue *priority_queue_create(
     enum priority_queue_implementation implementation,

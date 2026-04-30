@@ -36,21 +36,11 @@ def test_invalid_implementation():
     raise AssertionError("invalid implementation was accepted")
 
 
-def test_planned_implementations_are_not_available_yet():
-    for implementation in ["fibonacci_heap", "kaplan_heap"]:
-        try:
-            hpqlib.PriorityQueue(implementation=implementation)
-        except NotImplementedError as error:
-            assert implementation in str(error)
-            continue
-
-        raise AssertionError(f"{implementation} was accepted")
-
-
 def main():
     check_priority_queue("binary_heap")
+    check_priority_queue("fibonacci_heap")
+    check_priority_queue("kaplan_heap")
     test_invalid_implementation()
-    test_planned_implementations_are_not_available_yet()
     print("All Python priority_queue tests passed")
 
 

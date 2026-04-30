@@ -9,8 +9,7 @@ failure behavior.
 ## API Reference
 
 - [priority_queue](api/priority_queue.md): public C abstract data type.
-- [Heap Implementations](api/implementations.md): implemented and planned
-  heap backends.
+- [Heap Implementations](api/implementations.md): available heap backends.
 - [Python API](api/python.md): `hpqlib.PriorityQueue` constructor, methods, and
   exceptions.
 
